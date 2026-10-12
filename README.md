@@ -1,33 +1,52 @@
 ### Moyasar
 
-Moyasar payment gateway (mada, Apple Pay, STC Pay) for Frappe and ERPNext
+[Moyasar](https://moyasar.com) payment gateway for Frappe / ERPNext: customers pay
+Payment Requests (web shop orders, subscription invoices, anything with a Payment
+Request) by mada, Apple Pay, STC Pay or card, in SAR.
 
-### Installation
+It plugs into the standard [payments](https://github.com/frappe/payments) framework as
+the Payment Gateway **Moyasar**, so ERPNext's Payment Request flow, webshop checkout
+and subscriptions use it like any built-in gateway.
 
-You can install this app using the [bench](https://github.com/frappe/bench) CLI:
+#### How a payment is confirmed
+
+1. A Payment Request asks for a payment URL: a Moyasar hosted **invoice** is created
+   (valid for 60 minutes) and an Integration Request remembers it.
+2. The customer pays on Moyasar's page.
+3. Moyasar redirects the customer back (`return_from_moyasar`) and, separately, calls
+   the webhook. Either is enough.
+4. Neither is trusted: the app fetches the invoice from Moyasar with the secret key and
+   only if Moyasar reports it **paid, for the amount and currency asked**, marks the
+   Payment Request paid (Payment Entry, and Sales Invoice when the request asks for
+   one). Settling is idempotent; a second payment for an already-paid or cancelled
+   request is logged in Error Log as needing a refund.
+
+#### Installation
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
-bench install-app moyasar
+bench get-app https://github.com/wahrani1/moyasar --branch develop
+bench --site <site> install-app moyasar
 ```
 
-### Contributing
+Requires `payments` and `erpnext`.
 
-This app uses `pre-commit` for code formatting and linting. Please [install pre-commit](https://pre-commit.com/#installation) and enable it for this repository:
+#### Setup
 
-```bash
-cd apps/moyasar
-pre-commit install
-```
+1. **Moyasar Settings**: enter the Publishable Key and Secret Key (`pk_test_…` /
+   `sk_test_…` in sandbox), tick **Enabled**, save. This creates the Payment Gateway
+   "Moyasar" and, for the default company, a Payment Gateway Account.
+2. **Payment Gateway Account** "Moyasar - SAR - …": set **Payment Account** to a
+   non-group bank/clearing ledger (e.g. "Moyasar"). A group account makes every
+   settlement fail.
+3. **Webhook** (production): in the Moyasar dashboard add the *Webhook URL* shown in
+   Moyasar Settings for the `payment_paid` event, and copy its Secret Token into
+   **Webhook Secret**. Without it a payment is still confirmed when the customer
+   returns to the site; the webhook covers customers who close the tab. It needs a
+   publicly reachable site, so it never fires on a local bench.
 
-Pre-commit is configured to use the following tools for checking and formatting your code:
+Only SAR is supported; Moyasar's minimum is 1.00 SAR.
 
-- ruff
-- eslint
-- prettier
-- pyupgrade
+#### License
 
-### License
-
-mit
+MIT

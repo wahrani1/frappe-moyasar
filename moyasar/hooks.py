@@ -8,7 +8,8 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+# Payment Gateway (payments) and Payment Request / Payment Entry (erpnext).
+required_apps = ["payments", "erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -255,4 +256,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

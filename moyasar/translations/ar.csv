@@ -1,0 +1,19 @@
+Moyasar Settings,إعدادات ميسر
+Enabled,مفعّل
+Credentials,بيانات الاعتماد
+Publishable Key,المفتاح العام
+"pk_test_... in sandbox, pk_live_... in production.",pk_test_... في بيئة الاختبار، و pk_live_... في بيئة الإنتاج.
+Secret Key,المفتاح السري
+"sk_test_... in sandbox, sk_live_... in production.",sk_test_... في بيئة الاختبار، و sk_live_... في بيئة الإنتاج.
+Webhook Secret,سر الويب هوك
+The Secret Token set on the webhook in the Moyasar dashboard.,الرمز السري المعيّن للويب هوك في لوحة تحكم ميسر.
+Webhook URL,رابط الويب هوك
+Register this URL as a webhook in the Moyasar dashboard for the payment_paid event.,سجّل هذا الرابط كويب هوك في لوحة تحكم ميسر لحدث payment_paid.
+"Payments are confirmed by fetching the invoice back from Moyasar, so a missing webhook only delays confirmation until the customer returns to the site.",تُؤكَّد المدفوعات بجلب الفاتورة من ميسر، لذا فإن غياب الويب هوك يؤخر التأكيد فقط حتى يعود العميل إلى الموقع.
+Moyasar does not support transactions in {0}. Supported: {1},لا يدعم ميسر المعاملات بعملة {0}. العملات المدعومة: {1}
+The minimum amount payable through Moyasar is {0} {1},الحد الأدنى للمبلغ المدفوع عبر ميسر هو {0} {1}
+Moyasar payments are disabled,مدفوعات ميسر معطّلة
+Could not reach the payment provider. Please try again.,تعذّر الاتصال بمزوّد الدفع. يرجى المحاولة مرة أخرى.
+Unknown payment,عملية دفع غير معروفة
+Invalid webhook token,رمز الويب هوك غير صالح
+Moyasar,ميسر

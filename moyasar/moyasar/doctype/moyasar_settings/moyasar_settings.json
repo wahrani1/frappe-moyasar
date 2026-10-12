@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "creation": "2026-10-01 17:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "credentials_section",
+  "publishable_key",
+  "secret_key",
+  "column_break_mysr",
+  "webhook_secret",
+  "webhook_url"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "credentials_section",
+   "fieldtype": "Section Break",
+   "label": "Credentials"
+  },
+  {
+   "description": "pk_test_... in sandbox, pk_live_... in production.",
+   "fieldname": "publishable_key",
+   "fieldtype": "Data",
+   "label": "Publishable Key",
+   "mandatory_depends_on": "enabled"
+  },
+  {
+   "description": "sk_test_... in sandbox, sk_live_... in production.",
+   "fieldname": "secret_key",
+   "fieldtype": "Password",
+   "label": "Secret Key",
+   "mandatory_depends_on": "enabled"
+  },
+  {
+   "fieldname": "column_break_mysr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The Secret Token set on the webhook in the Moyasar dashboard.",
+   "fieldname": "webhook_secret",
+   "fieldtype": "Password",
+   "label": "Webhook Secret"
+  },
+  {
+   "description": "Register this URL as a webhook in the Moyasar dashboard for the payment_paid event.",
+   "fieldname": "webhook_url",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "Webhook URL",
+   "read_only": 1
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-10-12 13:19:40.508293",
+ "modified_by": "Administrator",
+ "module": "Moyasar",
+ "name": "Moyasar Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accounts Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
