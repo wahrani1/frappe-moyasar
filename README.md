@@ -25,7 +25,7 @@ and subscriptions use it like any built-in gateway.
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app https://github.com/wahrani1/moyasar --branch develop
+bench get-app https://github.com/wahrani1/frappe-moyasar --branch develop
 bench --site <site> install-app moyasar
 ```
 
