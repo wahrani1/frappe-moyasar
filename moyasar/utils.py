@@ -27,3 +27,8 @@ def as_administrator():
 		local.user_perms = None
 		local.role_permissions = {}
 		local.cache = {}
+
+
+def has_app_permission():
+	"""Apps-screen tile only for users who can open what it links to."""
+	return frappe.has_permission("Moyasar Settings", "read")

@@ -11,16 +11,16 @@ app_license = "mit"
 # Payment Gateway (payments) and Payment Request / Payment Entry (erpnext).
 required_apps = ["payments", "erpnext"]
 
-# Each item in the list will be shown as an app in the apps page
-# add_to_apps_screen = [
-# 	{
-# 		"name": "moyasar",
-# 		"logo": "/assets/moyasar/logo.png",
-# 		"title": "Moyasar",
-# 		"route": "/moyasar",
-# 		"has_permission": "moyasar.api.permission.has_app_permission"
-# 	}
-# ]
+# The desk's apps screen (Frappe v16) shows an app only when it declares this.
+add_to_apps_screen = [
+	{
+		"name": "moyasar",
+		"logo": "/assets/moyasar/icons/logo.png",
+		"title": "Moyasar",
+		"route": "/desk/moyasar-settings",
+		"has_permission": "moyasar.utils.has_app_permission",
+	}
+]
 
 # Includes in <head>
 # ------------------
